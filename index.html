@@ -61,24 +61,22 @@
             padding: 48px 24px 80px;
         }
 
-        /* 카테고리 탭 */
-        .category-tabs {
+        /* 탭 네비게이션 (2단) */
+        .tab-nav { margin-bottom: 48px; }
+
+        /* 상위 그룹 탭 */
+        .tab-groups {
             display: flex;
-            gap: 12px;
-            margin-bottom: 48px;
-            overflow-x: auto;
-            padding-bottom: 8px;
+            gap: 8px;
             justify-content: center;
-            align-items: center;
+            flex-wrap: wrap;
         }
 
-        .category-tabs::-webkit-scrollbar { display: none; }
-
-        .tab {
-            padding: 10px 20px;
+        .group-tab {
+            padding: 11px 24px;
             border-radius: 999px;
-            font-size: 15px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 800;
             color: var(--text-gray);
             background-color: #F2F4F6;
             cursor: pointer;
@@ -87,24 +85,55 @@
             user-select: none;
         }
 
-        .tab.active {
+        .group-tab.active {
             background-color: var(--point-pink);
             color: white;
             box-shadow: 0 8px 20px rgba(255, 92, 138, 0.25);
         }
 
-        .tab:hover:not(.active) {
+        .group-tab:hover:not(.active) {
             background-color: var(--point-pink-light);
             color: var(--point-pink-dark);
         }
 
-        /* 시리즈 구분선 */
-        .tab-divider {
-            width: 1px;
-            height: 22px;
-            background-color: #E5E8EB;
+        /* 하위 시리즈 탭 */
+        .sub-tabs {
+            display: none;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .sub-tabs.active { display: flex; }
+
+        .sub-tabs::-webkit-scrollbar { display: none; }
+
+        .tab {
+            padding: 9px 18px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-gray);
+            background-color: #F8F9FA;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            user-select: none;
             flex: 0 0 auto;
-            align-self: center;
+        }
+
+        .tab.active {
+            background-color: var(--point-pink-light);
+            color: var(--point-pink-dark);
+            border-color: transparent;
+            font-weight: 800;
+        }
+
+        .tab:hover:not(.active) {
+            background-color: var(--point-pink-light);
+            color: var(--point-pink-dark);
         }
 
         /* 탭 콘텐츠 영역 */
@@ -267,28 +296,29 @@
 
             .section-hero h1 { font-size: 32px; }
 
-            .section-hero p {
-                font-size: 15px;
-            }
+            .section-hero p { font-size: 15px; }
 
             .info-cards { grid-template-columns: 1fr; }
 
-            .category-tabs {
+            .group-tab {
+                font-size: 15px;
+                padding: 10px 18px;
+            }
+
+            /* 하위 탭은 모바일에서 가로 스크롤 */
+            .sub-tabs.active {
                 justify-content: flex-start;
                 flex-wrap: nowrap;
                 overflow-x: auto;
             }
 
             .tab {
-                flex: 0 0 auto;
-                font-size: 14px;
-                padding: 10px 16px;
+                font-size: 13px;
+                padding: 9px 15px;
             }
 
             .landing-image,
-            .webtoon-image {
-                border-radius: 18px;
-            }
+            .webtoon-image { border-radius: 18px; }
         }
 
         @media (max-width: 480px) {
@@ -298,9 +328,12 @@
 
             .section-hero h1 { font-size: 28px; }
 
-            .next-section-btn {
-                width: 100%;
+            .group-tab {
+                font-size: 14px;
+                padding: 9px 15px;
             }
+
+            .next-section-btn { width: 100%; }
         }
 
         /* 애니메이션 */
@@ -318,28 +351,43 @@
 
     <main>
 
-        <div class="category-tabs">
-            <div class="tab active" data-tab="guidebook">가이드북 홈</div>
-            <div class="tab" data-tab="greeting">인사&호칭편</div>
-            <div class="tab" data-tab="phone">전화예절편</div>
-            <div class="tab" data-tab="dresscode">복장편</div>
-            <div class="tab" data-tab="attendance">근태관리편</div>
-            <div class="tab" data-tab="facility">공용시설편</div>
-            <div class="tab-divider"></div>
-            <div class="tab" data-tab="basics">업무의 기본편</div>
-            <div class="tab" data-tab="collab">협업편</div>
-            <div class="tab" data-tab="comm">소통편</div>
-            <div class="tab" data-tab="security">정보보안편</div>
-        </div>
+        <!-- ================================ -->
+        <!-- 2단 탭 네비게이션                  -->
+        <!-- ================================ -->
+        <nav class="tab-nav">
+            <!-- 상위 그룹 탭 -->
+            <div class="tab-groups">
+                <div class="group-tab active" data-group="home">가이드북 홈</div>
+                <div class="group-tab" data-group="life">생활수칙</div>
+                <div class="group-tab" data-group="work">업무수칙</div>
+            </div>
+
+            <!-- 생활수칙 하위 탭 -->
+            <div class="sub-tabs" data-subgroup="life">
+                <div class="tab" data-tab="greeting">인사&호칭편</div>
+                <div class="tab" data-tab="phone">전화예절편</div>
+                <div class="tab" data-tab="dresscode">복장편</div>
+                <div class="tab" data-tab="attendance">근태관리편</div>
+                <div class="tab" data-tab="facility">공용시설편</div>
+            </div>
+
+            <!-- 업무수칙 하위 탭 -->
+            <div class="sub-tabs" data-subgroup="work">
+                <div class="tab" data-tab="basics">업무의 기본편</div>
+                <div class="tab" data-tab="collab">협업편</div>
+                <div class="tab" data-tab="comm">소통편</div>
+                <div class="tab" data-tab="security">정보보안편</div>
+            </div>
+        </nav>
 
         <!-- ================================ -->
-        <!-- 탭 1: 가이드북 웹툰 랜딩페이지      -->
+        <!-- 탭: 가이드북 웹툰 랜딩페이지        -->
         <!-- ================================ -->
         <div class="tab-content active" id="tab-guidebook">
             <div class="section-hero">
                 <div class="overline">GUIDEBOOK WEBTOON</div>
                 <h1>히포케이메논<br>가이드북 웹툰</h1>
-                <p>생활수칙 · 업무수칙 시리즈를 웹툰으로 쉽고 자연스럽게 확인해 보세요.<br>필요한 편을 선택하면 바로 이동할 수 있습니다.</p>
+                <p>생활수칙 · 업무수칙 시리즈를 웹툰으로 쉽고 자연스럽게 확인해 보세요.<br>위에서 시리즈를 선택하면 편별로 바로 이동할 수 있습니다.</p>
             </div>
 
             <div class="landing-image">
@@ -366,7 +414,7 @@
         </div>
 
         <!-- ================================ -->
-        <!-- 탭 2: 생활수칙 시리즈 - 인사&호칭편 -->
+        <!-- 생활수칙 시리즈 - 인사&호칭편       -->
         <!-- ================================ -->
         <div class="tab-content" id="tab-greeting">
             <div class="section-hero">
@@ -383,7 +431,7 @@
         </div>
 
         <!-- ================================ -->
-        <!-- 탭 3: 생활수칙 시리즈 - 전화예절편  -->
+        <!-- 생활수칙 시리즈 - 전화예절편        -->
         <!-- ================================ -->
         <div class="tab-content" id="tab-phone">
             <div class="section-hero">
@@ -400,7 +448,7 @@
         </div>
 
         <!-- ================================ -->
-        <!-- 탭 4: 생활수칙 시리즈 - 복장편      -->
+        <!-- 생활수칙 시리즈 - 복장편            -->
         <!-- ================================ -->
         <div class="tab-content" id="tab-dresscode">
             <div class="section-hero">
@@ -417,7 +465,7 @@
         </div>
 
         <!-- ================================ -->
-        <!-- 탭 5: 생활수칙 시리즈 - 근태관리편  -->
+        <!-- 생활수칙 시리즈 - 근태관리편        -->
         <!-- ================================ -->
         <div class="tab-content" id="tab-attendance">
             <div class="section-hero">
@@ -434,7 +482,7 @@
         </div>
 
         <!-- ================================ -->
-        <!-- 탭 6: 생활수칙 시리즈 - 공용시설편  -->
+        <!-- 생활수칙 시리즈 - 공용시설편        -->
         <!-- ================================ -->
         <div class="tab-content" id="tab-facility">
             <div class="section-hero">
@@ -451,7 +499,7 @@
         </div>
 
         <!-- ================================ -->
-        <!-- 탭 7: 업무수칙 시리즈 - 업무의 기본편 -->
+        <!-- 업무수칙 시리즈 - 업무의 기본편      -->
         <!-- ================================ -->
         <div class="tab-content" id="tab-basics">
             <div class="section-hero">
@@ -468,7 +516,7 @@
         </div>
 
         <!-- ================================ -->
-        <!-- 탭 8: 업무수칙 시리즈 - 협업편       -->
+        <!-- 업무수칙 시리즈 - 협업편            -->
         <!-- ================================ -->
         <div class="tab-content" id="tab-collab">
             <div class="section-hero">
@@ -485,7 +533,7 @@
         </div>
 
         <!-- ================================ -->
-        <!-- 탭 9: 업무수칙 시리즈 - 소통편       -->
+        <!-- 업무수칙 시리즈 - 소통편            -->
         <!-- ================================ -->
         <div class="tab-content" id="tab-comm">
             <div class="section-hero">
@@ -502,7 +550,7 @@
         </div>
 
         <!-- ================================ -->
-        <!-- 탭 10: 업무수칙 시리즈 - 정보보안편  -->
+        <!-- 업무수칙 시리즈 - 정보보안편        -->
         <!-- ================================ -->
         <div class="tab-content" id="tab-security">
             <div class="section-hero">
@@ -538,35 +586,64 @@
             e.preventDefault();
         });
 
-        const tabs = document.querySelectorAll('.tab');
+        const groupTabs = document.querySelectorAll('.group-tab');
+        const subRows = document.querySelectorAll('.sub-tabs');
+        const subTabs = document.querySelectorAll('.tab');
         const contents = document.querySelectorAll('.tab-content');
 
-        function activateTab(target) {
-            tabs.forEach(t => t.classList.remove('active'));
-            const targetTab = document.querySelector(`.tab[data-tab="${target}"]`);
-            if (targetTab) targetTab.classList.add('active');
+        // 각 편이 속한 그룹 정의
+        const episodeGroup = {
+            greeting: 'life', phone: 'life', dresscode: 'life', attendance: 'life', facility: 'life',
+            basics: 'work', collab: 'work', comm: 'work', security: 'work'
+        };
+        // 그룹별 첫 번째 편
+        const firstOf = { life: 'greeting', work: 'basics' };
 
-            contents.forEach(c => {
-                c.classList.remove('active');
-                c.style.animation = 'none';
-            });
-
-            const activeContent = document.getElementById('tab-' + target);
-            if (!activeContent) return;
-
-            activeContent.offsetHeight;
-            activeContent.style.animation = 'fadeInUp 0.5s ease forwards';
-            activeContent.classList.add('active');
-
+        function setContent(target) {
+            contents.forEach(c => { c.classList.remove('active'); c.style.animation = 'none'; });
+            const el = document.getElementById('tab-' + target);
+            if (!el) return;
+            el.offsetHeight;
+            el.style.animation = 'fadeInUp 0.5s ease forwards';
+            el.classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => activateTab(tab.dataset.tab));
+        function activateTab(target) {
+            const group = (target === 'guidebook') ? 'home' : episodeGroup[target];
+
+            // 상위 그룹 탭 활성화
+            groupTabs.forEach(t => t.classList.toggle('active', t.dataset.group === group));
+
+            // 해당 그룹의 하위 탭 줄만 노출
+            subRows.forEach(r => r.classList.toggle('active', r.dataset.subgroup === group));
+
+            // 하위 탭 활성화 상태
+            subTabs.forEach(t => t.classList.remove('active'));
+            if (group !== 'home') {
+                const st = document.querySelector(`.tab[data-tab="${target}"]`);
+                if (st) st.classList.add('active');
+            }
+
+            setContent(target);
+        }
+
+        // 상위 그룹 탭 클릭 → 홈이면 랜딩, 시리즈면 그 시리즈 첫 편
+        groupTabs.forEach(gt => {
+            gt.addEventListener('click', () => {
+                const g = gt.dataset.group;
+                activateTab(g === 'home' ? 'guidebook' : firstOf[g]);
+            });
         });
 
-        document.querySelectorAll('[data-next]').forEach(item => {
-            item.addEventListener('click', () => activateTab(item.dataset.next));
+        // 하위 편 탭 클릭
+        subTabs.forEach(t => {
+            t.addEventListener('click', () => activateTab(t.dataset.tab));
+        });
+
+        // 다음 편 / 홈 버튼
+        document.querySelectorAll('[data-next]').forEach(b => {
+            b.addEventListener('click', () => activateTab(b.dataset.next));
         });
     </script>
 
