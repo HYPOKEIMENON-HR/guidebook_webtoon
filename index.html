@@ -69,6 +69,7 @@
             overflow-x: auto;
             padding-bottom: 8px;
             justify-content: center;
+            align-items: center;
         }
 
         .category-tabs::-webkit-scrollbar { display: none; }
@@ -95,6 +96,15 @@
         .tab:hover:not(.active) {
             background-color: var(--point-pink-light);
             color: var(--point-pink-dark);
+        }
+
+        /* 시리즈 구분선 */
+        .tab-divider {
+            width: 1px;
+            height: 22px;
+            background-color: #E5E8EB;
+            flex: 0 0 auto;
+            align-self: center;
         }
 
         /* 탭 콘텐츠 영역 */
@@ -315,6 +325,11 @@
             <div class="tab" data-tab="dresscode">복장편</div>
             <div class="tab" data-tab="attendance">근태관리편</div>
             <div class="tab" data-tab="facility">공용시설편</div>
+            <div class="tab-divider"></div>
+            <div class="tab" data-tab="basics">업무의 기본편</div>
+            <div class="tab" data-tab="collab">협업편</div>
+            <div class="tab" data-tab="comm">소통편</div>
+            <div class="tab" data-tab="security">정보보안편</div>
         </div>
 
         <!-- ================================ -->
@@ -324,7 +339,7 @@
             <div class="section-hero">
                 <div class="overline">GUIDEBOOK WEBTOON</div>
                 <h1>히포케이메논<br>가이드북 웹툰</h1>
-                <p>생활수칙 시리즈를 웹툰으로 쉽고 자연스럽게 확인해 보세요.<br>필요한 편을 선택하면 바로 이동할 수 있습니다.</p>
+                <p>생활수칙 · 업무수칙 시리즈를 웹툰으로 쉽고 자연스럽게 확인해 보세요.<br>필요한 편을 선택하면 바로 이동할 수 있습니다.</p>
             </div>
 
             <div class="landing-image">
@@ -430,6 +445,74 @@
 
             <div class="webtoon-image">
                 <img src="https://res.cloudinary.com/dq3uhnrdc/image/upload/v1778823269/%EB%B3%B4%EA%B3%A0_%EC%83%9D%ED%99%9C%EC%88%98%EC%B9%99_%EA%B3%B5%EC%9A%A9%EC%8B%9C%EC%84%A4%ED%8E%B8_v2_260515_zy8zyl.jpg" alt="생활수칙 시리즈 공용시설편 웹툰">
+            </div>
+
+            <button class="next-section-btn" data-next="basics">업무수칙 시리즈 보러가기 →</button>
+        </div>
+
+        <!-- ================================ -->
+        <!-- 탭 7: 업무수칙 시리즈 - 업무의 기본편 -->
+        <!-- ================================ -->
+        <div class="tab-content" id="tab-basics">
+            <div class="section-hero">
+                <div class="overline">WORK RULES SERIES 01</div>
+                <h1>업무수칙 시리즈<br>업무의 기본편</h1>
+                <p>업무를 시작하기 전 알아야 할<br>기본 태도와 일하는 방식을 확인해 보세요.</p>
+            </div>
+
+            <div class="webtoon-image">
+                <img src="https://res.cloudinary.com/dq3uhnrdc/image/upload/v1779760066/%EB%B3%B4%EA%B3%A0_%EC%97%85%EB%AC%B4%EC%88%98%EC%B9%99_%EC%97%85%EB%AC%B4%EC%9D%98%EA%B8%B0%EB%B3%B8_v1_260521_jllpei.jpg" alt="업무수칙 시리즈 업무의 기본편 웹툰">
+            </div>
+
+            <button class="next-section-btn" data-next="collab">협업편 보러가기 →</button>
+        </div>
+
+        <!-- ================================ -->
+        <!-- 탭 8: 업무수칙 시리즈 - 협업편       -->
+        <!-- ================================ -->
+        <div class="tab-content" id="tab-collab">
+            <div class="section-hero">
+                <div class="overline">WORK RULES SERIES 02</div>
+                <h1>업무수칙 시리즈<br>협업편</h1>
+                <p>동료와 함께 일할 때 필요한<br>협업 기준과 태도를 확인해 보세요.</p>
+            </div>
+
+            <div class="webtoon-image">
+                <img src="https://res.cloudinary.com/dq3uhnrdc/image/upload/v1779760066/%EB%B3%B4%EA%B3%A0_%EC%97%85%EB%AC%B4%EC%88%98%EC%B9%99_%ED%98%91%EC%97%85%ED%8E%B8_v2_260521_gwgjsc.jpg" alt="업무수칙 시리즈 협업편 웹툰">
+            </div>
+
+            <button class="next-section-btn" data-next="comm">소통편 보러가기 →</button>
+        </div>
+
+        <!-- ================================ -->
+        <!-- 탭 9: 업무수칙 시리즈 - 소통편       -->
+        <!-- ================================ -->
+        <div class="tab-content" id="tab-comm">
+            <div class="section-hero">
+                <div class="overline">WORK RULES SERIES 03</div>
+                <h1>업무수칙 시리즈<br>소통편</h1>
+                <p>업무 중 원활한 소통을 위한<br>기본 표현과 커뮤니케이션 매너를 확인해 보세요.</p>
+            </div>
+
+            <div class="webtoon-image">
+                <img src="https://res.cloudinary.com/dq3uhnrdc/image/upload/v1779760066/%EB%B3%B4%EA%B3%A0_%EC%97%85%EB%AC%B4%EC%88%98%EC%B9%99_%EC%86%8C%ED%86%B5%ED%8E%B8_v2_260521_sn5lwl.jpg" alt="업무수칙 시리즈 소통편 웹툰">
+            </div>
+
+            <button class="next-section-btn" data-next="security">정보보안편 보러가기 →</button>
+        </div>
+
+        <!-- ================================ -->
+        <!-- 탭 10: 업무수칙 시리즈 - 정보보안편  -->
+        <!-- ================================ -->
+        <div class="tab-content" id="tab-security">
+            <div class="section-hero">
+                <div class="overline">WORK RULES SERIES 04</div>
+                <h1>업무수칙 시리즈<br>정보보안편</h1>
+                <p>회사와 고객의 정보를 안전하게 지키기 위한<br>기본 보안 수칙을 확인해 보세요.</p>
+            </div>
+
+            <div class="webtoon-image">
+                <img src="https://res.cloudinary.com/dq3uhnrdc/image/upload/v1779760066/%EB%B3%B4%EA%B3%A0_%EC%97%85%EB%AC%B4%EC%88%98%EC%B9%99_%EC%A0%95%EB%B3%B4%EB%B3%B4%EC%95%88%ED%8E%B8_v2_260521_cl1gd1.jpg" alt="업무수칙 시리즈 정보보안편 웹툰">
             </div>
 
             <button class="next-section-btn secondary" data-next="guidebook">가이드북 홈으로 돌아가기 ↑</button>
